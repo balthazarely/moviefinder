@@ -5,6 +5,7 @@
   "homepage": "https://balthazarely.github.io/moviefinder/",
   "dependencies": {
     "axios": "^0.19.0",
+    "gh-pages": "^2.1.1",
     "hover.css": "^2.3.2",
     "moment": "^2.24.0",
     "react": "^16.10.1",
