@@ -12,11 +12,14 @@ const MyList = (props) => {
             <Grid>
              <Grid.Column width={8}>
             <Image className="my-list-poster"  src={"https://image.tmdb.org/t/p/w300" + fav.data.poster_path} alt="Movie Poster" />
+            <Button className="hover my-list-btn" size="mini" circular icon='minus' onClick={props.removeFavorites.bind(null, fav)}/>
+
             </Grid.Column>
             <Grid.Column className="align-left" width={8}>
-            <h5>{fav.data.title}</h5>
+            <h5 className="my-list-title">{fav.data.title}</h5>
              <p><Moment format="YYYY">{fav.data.release_date}</Moment></p>
-             <Button size='mini' onClick={props.removeFavorites.bind(null, fav)}>remove</Button>
+             <p>Rating: <b>{fav.data.vote_average}</b></p>
+    
             </Grid.Column>
             </Grid>
             <Divider />

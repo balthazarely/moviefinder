@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 
 const MovieRow = (props) => {   
     const movies = props.movie.map((pickedMovie, i) => {
-        // console.log(props.addMovieToFavorites)
+        console.log(props.movie)
 
         const genres = pickedMovie.genre_ids.slice(0, 2).map((genre, i) => {
             if(genre === 28) {
@@ -55,12 +55,14 @@ const MovieRow = (props) => {
 
 
         return( 
+
+            
             <Segment >
                 <Grid celled='internally'>
                     <Grid.Row>
                         <Grid.Column width={5}>
                             <Image className="poster"  src={"https://image.tmdb.org/t/p/w400/" + pickedMovie.poster_path} alt="Movie Poster" />
-                            <p>Rating: {pickedMovie.vote_average} </p>
+                            
                         </Grid.Column>
                         <Grid.Column width={11} className="align-left">
                             <div className="float-right">
@@ -69,8 +71,9 @@ const MovieRow = (props) => {
                             <div>
                             <h2 className="movie-title">{pickedMovie.title}</h2>
                             <p className="overview-text">{pickedMovie.overview}</p>
+                            <p>Rating: <b>{pickedMovie.vote_average}</b> </p>
                             <Label>{genres}</Label>
-                            <Button className="add-btn" value={pickedMovie.id} circular icon='add' onClick={props.addMovieToFavorites}/>
+                            <Button className="add-btn hover" value={pickedMovie.id} circular size='big' icon='add' onClick={props.addMovieToFavorites}/>
 
                             
                             </div>

@@ -4,8 +4,10 @@ import MovieRow from './Components/MovieRow'
 import TopMovieData from './Components/TopMovieData'
 import TopMovieCards from './Components/TopMovieCards'
 import MyList from './Components/MyList'
+import Welcome from './Components/Welcome'
+import MoviePlaceholder from './Components/MoviePlaceholder'
 import Axios from 'axios';
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid, Segment, Input, Label,Placeholder } from 'semantic-ui-react';
 
 
 class App extends Component {
@@ -17,13 +19,16 @@ class App extends Component {
       movieData: [],
       topMovieData: [],
       favorites: [],
-      MyListMovieLoading: true
+      MyListMovieLoading: true,
+      searchFired: false
     }
 
     this.performSearch = this.performSearch.bind(this)
 
     this.findTopMovies();
     this.performSearch();
+
+    
   }
 
   searchChangeHandeler = (e) => {
@@ -38,7 +43,8 @@ class App extends Component {
         const results = response;
         this.setState({
           movieData: results.data.results,
-          loading: false
+          loading: false,
+          searchFired: true
         })    
   })
     .catch (error => {
@@ -67,10 +73,10 @@ class App extends Component {
       .then(response3 => {
           const results3 = response3;
           console.log(response3.data)
-          this.setState({
-            favorites: [...this.state.favorites, response3],
-            MyListMovieLoading: false
-          })
+            this.setState({
+              favorites: [...this.state.favorites, response3],
+              MyListMovieLoading: false
+            })
       })
   }
 
@@ -80,6 +86,8 @@ class App extends Component {
       favorites: this.state.favorites.filter((movie) => movie !== fav)
     })
   }
+
+  
 
 
 
@@ -100,41 +108,45 @@ class App extends Component {
             </tr>
           </tbody>
         </table>
-          <input style={{
-            fontSize: "18px",
-            display: "block",
-            width: "100%",
-            paddingTop: 8,
-            paddingBottom: 8,
-            paddingLeft: 16,
-            marginBottom: 20,
-          }} onChange={this.searchChangeHandeler}
-          placeholder="Enter search term" />
-
+   
+       
 
         <div className="App">
-
+        {/* <Welcome /> */}
+       
     
-          <Segment className="segment-main">
+        <Segment className="segment-main">
+          <Input icon='search' className="searchinput align-left " placeholder='Search...' onChange={this.searchChangeHandeler}/>
+            
             <Grid stackable columns={2}>
               <Grid.Row>
                 <Grid.Column width={3}>
-                <h3>MY LIST</h3>
-                {this.state.loading ? null : <MyList favorites={this.state.favorites} removeFavorites={this.removeMovieFromFavorites}/>}
+                <div className="label"> 
+                    <Label size="large label" color='orange' className="hover label mylist-trending">MY LIST</Label>
+                    </div>
+                    {this.state.loading ? null : <MyList favorites={this.state.favorites} removeFavorites={this.removeMovieFromFavorites}/>}
+
                 </Grid.Column>
                 <Grid.Column width={10}>
-                  {this.state.loading ? null : <MovieRow movie={this.state.movieData} addMovieToFavorites={this.addMovieToFavorites}/>}
+                  {this.state.loading === true ? <MoviePlaceholder/> : <MovieRow movie={this.state.movieData} addMovieToFavorites={this.addMovieToFavorites}/>}
                 </Grid.Column>
                 <Grid.Column width={3}>
-                <h3>TRENDING</h3>
-                {this.state.loading ? null : <TopMovieCards topMovie={this.state.topMovieData}/>}
+
+                <div className="label"> 
+                 <Label size="large" color='orange'  className="hover label mylist-trending">TRENDING</Label>
+                 </div>
+                    {this.state.loading ? null : <TopMovieCards topMovie={this.state.topMovieData} addMovieToFavorites={this.addMovieToFavorites}/>}
+
+                  
+
                 </Grid.Column>
               </Grid.Row>
             </Grid> 
+
+            
             </Segment>
             
-        </div>
-
+        </div> 
 
 
       </div>

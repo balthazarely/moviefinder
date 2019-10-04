@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  margin: 0px 40px 0px 40px;
+  margin: 20px 40px 0px 40px;
+
 }
 
 .App-logo {
@@ -45,6 +46,26 @@
   float: right;
 }
 
+.my-list-btn {
+  float: right;
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.float-left {
+  float: left;
+}
+
 .dateFloat {
   display: inline;
 }
@@ -59,6 +80,40 @@
 
 .add-btn {
   float: right;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+}
+
+.container{
+  position: relative;
+  
+}
+
+.container .top-movie-cards {
+  width: 100%;
+  height: auto;
+}
+
+.top-movie-cards{
+  padding-top: 10px;
+
+}
+
+.add-btn-card  {
+  float: right;
+  position: absolute;
+  top: 0%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .top-movies {
@@ -79,11 +134,57 @@
 
 .movie-title{
   color: rgb(242, 119, 85);
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 800;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
 }
 
-/* .my-list-poster {
-  height: 100px;
-  width: auto;
-} */
+.my-list-title{
+  color: rgb(242, 119, 85);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.mylist-trending {
+  color: rgb(242, 119, 85);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+/* Grow */
+.hover {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hover:hover,
+.hover:focus,
+.hover:active {
+  transform: scale(1.1);
+  
+}
+
+.myList {
+  background: black;
+}
+
+.searchinput {
+  font-size: 18px;
+  width: 40%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* padding-left: 16px; */
+  margin-bottom: 20px;
+}
+
+.label {
+  margin-bottom: 10px;
+}
