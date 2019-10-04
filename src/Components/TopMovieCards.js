@@ -3,7 +3,7 @@ import { Divider, Segment, Grid, Icon, Image, Label, Card, Button } from 'semant
 
 
 const TopMovieCards = (props) => {   
-    console.log(props.topMovie, "< TOP MOVEI CARDS")
+    // console.log(props.topMovie, "< TOP MOVEI CARDS")
     const topMovie = props.topMovie.slice(0, 10).map((pickedMovie, i) => {
         return( 
            <div>

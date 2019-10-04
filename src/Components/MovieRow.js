@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 
 const MovieRow = (props) => {   
     const movies = props.movie.map((pickedMovie, i) => {
-        console.log(props.movie)
+        // console.log(props.addMovieToFavorites)
 
         const genres = pickedMovie.genre_ids.slice(0, 2).map((genre, i) => {
             if(genre === 28) {
@@ -70,7 +70,9 @@ const MovieRow = (props) => {
                             <h2 className="movie-title">{pickedMovie.title}</h2>
                             <p className="overview-text">{pickedMovie.overview}</p>
                             <Label>{genres}</Label>
-                            <Button className="add-btn" circular icon='add' />
+                            <Button className="add-btn" value={pickedMovie.id} circular icon='add' onClick={props.addMovieToFavorites}/>
+
+                            
                             </div>
                         </Grid.Column>
                     </Grid.Row>

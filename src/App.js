@@ -3,6 +3,7 @@ import './App.css';
 import MovieRow from './Components/MovieRow'
 import TopMovieData from './Components/TopMovieData'
 import TopMovieCards from './Components/TopMovieCards'
+import MyList from './Components/MyList'
 import Axios from 'axios';
 import { Grid, Segment } from 'semantic-ui-react'
 
@@ -15,7 +16,8 @@ class App extends Component {
       toppMovieDataLoading: true,
       movieData: [],
       topMovieData: [],
-      favorites: []
+      favorites: [],
+      MyListMovieLoading: true
     }
 
     this.performSearch = this.performSearch.bind(this)
@@ -44,20 +46,6 @@ class App extends Component {
     });
   }
 
-
-
-  // whatGenre() {
-  //   Axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=5e9bd2fa585826bdfc4233fb6424f425&language=en-US')
-  //   .then(response4 => {
-  //       const results4 = response4;
-  //       console.log(results4, " < what GRENE")
-  // })
-  //   .catch (error => {
-  //       console.log(error);
-  //   });
-  // }
-
-
   findTopMovies() {
     Axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=5e9bd2fa585826bdfc4233fb6424f425')
     .then(response2 => {
@@ -71,6 +59,29 @@ class App extends Component {
         console.log(error);
     });
   }
+
+  addMovieToFavorites = async (e) => {
+    e.preventDefault();
+    console.log(e.currentTarget.value)
+        await Axios.get(`https://api.themoviedb.org/3/movie/${e.currentTarget.value}?api_key=5e9bd2fa585826bdfc4233fb6424f425&language=en-US`)
+      .then(response3 => {
+          const results3 = response3;
+          console.log(response3.data)
+          this.setState({
+            favorites: [...this.state.favorites, response3],
+            MyListMovieLoading: false
+          })
+      })
+  }
+
+  removeMovieFromFavorites = async (fav, e) => {
+    console.log("delete", fav)
+    this.setState({
+      favorites: this.state.favorites.filter((movie) => movie !== fav)
+    })
+  }
+
+
 
 
   render() {
@@ -109,9 +120,10 @@ class App extends Component {
               <Grid.Row>
                 <Grid.Column width={3}>
                 <h3>MY LIST</h3>
+                {this.state.loading ? null : <MyList favorites={this.state.favorites} removeFavorites={this.removeMovieFromFavorites}/>}
                 </Grid.Column>
                 <Grid.Column width={10}>
-                  {this.state.loading ? null : <MovieRow movie={this.state.movieData}/>}
+                  {this.state.loading ? null : <MovieRow movie={this.state.movieData} addMovieToFavorites={this.addMovieToFavorites}/>}
                 </Grid.Column>
                 <Grid.Column width={3}>
                 <h3>TRENDING</h3>
