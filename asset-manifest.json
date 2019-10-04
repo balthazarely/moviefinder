@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/moviefinder/static/css/main.1919560d.chunk.css",
+    "main.js": "/moviefinder/static/js/main.71d50e06.chunk.js",
+    "main.js.map": "/moviefinder/static/js/main.71d50e06.chunk.js.map",
+    "runtime-main.js": "/moviefinder/static/js/runtime-main.c4b95749.js",
+    "runtime-main.js.map": "/moviefinder/static/js/runtime-main.c4b95749.js.map",
+    "static/js/2.28f39ad3.chunk.js": "/moviefinder/static/js/2.28f39ad3.chunk.js",
+    "static/js/2.28f39ad3.chunk.js.map": "/moviefinder/static/js/2.28f39ad3.chunk.js.map",
+    "index.html": "/moviefinder/index.html",
+    "precache-manifest.f6b0fe9293006911b82188b866e12c46.js": "/moviefinder/precache-manifest.f6b0fe9293006911b82188b866e12c46.js",
+    "service-worker.js": "/moviefinder/service-worker.js",
+    "static/css/main.1919560d.chunk.css.map": "/moviefinder/static/css/main.1919560d.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c4b95749.js",
+    "static/js/2.28f39ad3.chunk.js",
+    "static/css/main.1919560d.chunk.css",
+    "static/js/main.71d50e06.chunk.js"
+  ]
+}
